@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"></meta>
+  <title>土Giao音乐播放器</title>
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <style media="screen">
+    #shabi {
+      position: fixed;
+      text-align: center;
+      top: 50%;
+      width: 100%;
+      z-index: -1;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="shabi">有点喜欢你</h1>
+  <div class='jAudio--player'>
+
+    <audio></audio>
+
+    <div class='jAudio--ui'>
+      <div class='jAudio--thumb'></div>
+      <div class='jAudio--status-bar'>
+        <div class='jAudio--details'></div>
+        <div class='jAudio--volume-bar'></div>
+        <div class='jAudio--progress-bar'>
+          <div class='jAudio--progress-bar-wrapper'>
+            <div class='jAudio--progress-bar-played'>
+              <span class='jAudio--progress-bar-pointer'></span>
+            </div>
+          </div>
+        </div>
+
+        <div class='jAudio--time'>
+          <span class='jAudio--time-elapsed'>00:00</span>
+          <span class='jAudio--time-total'>00:00</span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class='jAudio--playlist'>
+    </div>
+
+    <div class='jAudio--controls'>
+      <ul>
+        <li><button class='btn' data-action='prev' id='btn-prev'><span></span></button></li>
+        <li><button class='btn' data-action='play' id='btn-play'><span></span></button></li>
+        <li><button class='btn' data-action='next' id='btn-next'><span></span></button></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <script src='js/jquery-2.1.4.min.js'></script>
+  <script src='js/jaudio.js'></script>
+  <script>
+    var t = {
+      playlist: [{
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/01.mp3",
+          thumb: "thumbs/background.jpg",
+          trackName: "光明",
+          trackArtist: "01",
+          trackAlbum: "Single",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/02.mp3",
+          thumb: "thumbs/background.jpg",
+          trackName: "饼干圆圆",
+          trackArtist: "02",
+          trackAlbum: "Single",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/03.mp3",
+          thumb: "thumbs/background.jpg",
+          trackName: "玩娃娃",
+          trackArtist: "03",
+          trackAlbum: "Single",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/04.mp3",
+          thumb: "thumbs/background.jpg",
+          trackName: "小雨点",
+          trackArtist: "04",
+          trackAlbum: "Single",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/05.mp3",
+          thumb: "thumbs/background.jpg",
+          trackName: "星星很美丽",
+          trackArtist: "05",
+          trackAlbum: "Single",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/06.mp3",
+          thumb: "thumbs/background.jpg",
+          trackName: "说句悄悄话",
+          trackArtist: "06",
+          trackAlbum: "Single",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/07.mp3",
+          thumb: "thumbs/background.jpg",
+          trackName: "蜗牛",
+          trackArtist: "07",
+          trackAlbum: "Single",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/08.mp3",
+          thumb: "thumbs/background.jpg",
+          trackName: "小铃铛",
+          trackArtist: "08",
+          trackAlbum: "Single",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/09.mp3",
+          thumb: "thumbs/background.jpg",
+          trackName: "一二三",
+          trackArtist: "09",
+          trackAlbum: "Single",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/10.mp3",
+          thumb: "thumbs/background.jpg",
+          trackName: "玩具熊",
+          trackArtist: "10",
+          trackAlbum: "Single",
+        }
+      ],
+      autoPlay: true
+    }
+
+    $(".jAudio--player").jAudio(t);
+  </script>
+
+</body>
+
+</html>
