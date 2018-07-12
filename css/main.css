@@ -47,6 +47,7 @@ html {
   position: relative;
   width: 100%;
 }
+
 .jAudio--player .jAudio--status-bar {
   width: 100%;
   z-index: 1;
@@ -164,7 +165,7 @@ html {
 }
 .jAudio--player .jAudio--playlist {
   background: #fff;
-  
+
   padding-bottom: 73px;
 }
 .jAudio--player .jAudio--playlist .jAudio--playlist-item {
