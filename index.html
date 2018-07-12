@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
   <title>MusicPlayer</title>
   <link rel="stylesheet" type="text/css" href="css/main.css">
   <style media="screen">
@@ -14,12 +14,14 @@
       width: 100%;
       z-index: -1;
     }
+
     .jAudio--ui {
       position: fixed !important;
       top: 0 !important;
     }
-    .jAudio--playlist{
-    padding-top: 240px !important;
+
+    .jAudio--playlist {
+      padding-top: 240px !important;
     }
   </style>
 </head>
@@ -67,197 +69,196 @@
   </div>
 
   <!-- <script src='js/jquery-2.1.4.min.js'></script> -->
-  <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-
+  <script src="//chengyue.oss-cn-beijing.aliyuncs.com/guanwang/jquery-2.1.4.min.js"></script>
   <!-- <script src='js/jaudio.js'></script> -->
   <script src="//chengyue.oss-cn-beijing.aliyuncs.com/guanwang/jaudio.js" charset="utf-8"></script>
   <script>
     var t = {
       playlist: [{
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/01.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "光明",
           trackArtist: "01",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/02.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "饼干圆圆",
           trackArtist: "02",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/03.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "玩娃娃",
           trackArtist: "03",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/04.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "小雨点",
           trackArtist: "04",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/05.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "星星很美丽",
           trackArtist: "05",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/06.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "说句悄悄话",
           trackArtist: "06",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/07.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "蜗牛",
           trackArtist: "07",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/08.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "小铃铛",
           trackArtist: "08",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/09.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "一二三",
           trackArtist: "09",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/10.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "玩具熊",
           trackArtist: "10",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/11.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "小秘密",
           trackArtist: "11",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/12.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "我是好小孩",
           trackArtist: "12",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/13.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "姐妹",
           trackArtist: "13",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/14.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "咯咯咯",
           trackArtist: "14",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/15.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "爱睡觉的加菲猫",
           trackArtist: "15",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/16.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "月儿",
           trackArtist: "16",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/17.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "蚂蚁掉进河里边",
           trackArtist: "17",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/18.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "生日快乐",
           trackArtist: "18",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/19.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "大家来照相",
           trackArtist: "19",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/20.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "小天鹅",
           trackArtist: "20",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/21.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "泡泡",
           trackArtist: "21",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/22.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "眼睛",
           trackArtist: "22",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/23.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "明天我会长大",
           trackArtist: "23",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/24.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "小脚丫",
           trackArtist: "24",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/25.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "大声歌唱",
           trackArtist: "25",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/27.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "礼貌歌",
           trackArtist: "27",
           trackAlbum: "Single",
         },
         {
           file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/29.mp3",
-          thumb: "//www.xwboke.cn/api/api.php"+"?"+Math.floor(Math.random()*100),
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
           trackName: "我的画笔",
           trackArtist: "29",
           trackAlbum: "Single",
@@ -266,8 +267,23 @@
       autoPlay: true
     }
     $(".jAudio--player").jAudio(t);
+    window.onload=function () {
+        document.addEventListener('touchstart',function (event) {
+          if(event.touches.length>1){
+            event.preventDefault();
+          }
+        })
+        var lastTouchEnd=0;
+        document.addEventListener('touchend',function (event) {
+          var now=(new Date()).getTime();
+          if(now-lastTouchEnd<=300){
+            event.preventDefault();
+          }
+          lastTouchEnd=now;
+        },false)
+      }
   </script>
-<!-- thumb: "//source.unsplash.com/200x200/?dance"+"?"+Math.floor(Math.random()*100), -->
+  <!-- thumb: "//source.unsplash.com/200x200/?dance"+"?"+Math.floor(Math.random()*100), -->
 
 </body>
 
