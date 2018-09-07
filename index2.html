@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+  <title>MusicPlayer</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <style media="screen">
+    #shabi {
+      position: fixed;
+      text-align: center;
+      top: 50%;
+      width: 100%;
+      z-index: -1;
+    }
+
+    .jAudio--ui {
+      position: fixed !important;
+      top: 0 !important;
+    }
+
+    .jAudio--playlist {
+      padding-top: 237px !important;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="shabi">超级喜欢你
+    <br>
+    <span style="font-size:3px;transform: scale(0.8,1.5);">我就知道你会看</span>
+  </h1>
+  <div class='jAudio--player'>
+    <audio></audio>
+    <div class='jAudio--ui'>
+      <div class='jAudio--thumb'>
+      </div>
+      <div class='jAudio--status-bar'>
+        <div class='jAudio--details'></div>
+        <div class='jAudio--volume-bar'></div>
+        <div class='jAudio--progress-bar'>
+          <div class='jAudio--progress-bar-wrapper'>
+            <div class='jAudio--progress-bar-played'>
+              <span class='jAudio--progress-bar-pointer'></span>
+            </div>
+          </div>
+        </div>
+
+        <div class='jAudio--time'>
+          <span class='jAudio--time-elapsed'>00:00</span>
+          <span class='jAudio--time-total'>00:00</span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class='jAudio--playlist'>
+    </div>
+
+    <div class='jAudio--controls'>
+      <ul>
+        <li><button class='btn' data-action='prev' id='btn-prev'><span></span></button></li>
+        <li><button class='btn' data-action='play' id='btn-play'><span></span></button></li>
+        <li><button class='btn' data-action='next' id='btn-next'><span></span></button></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- <script src='js/jquery-2.1.4.min.js'></script> -->
+  <script src="//chengyue.oss-cn-beijing.aliyuncs.com/guanwang/jquery-2.1.4.min.js"></script>
+  <!-- <script src='js/jaudio.js'></script> -->
+  <script src="//chengyue.oss-cn-beijing.aliyuncs.com/guanwang/jaudio.js" charset="utf-8"></script>
+  <script>
+    var t = {
+      playlist: [{
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/少儿基本功01.mp3",
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
+          trackName: "少儿基本功01",
+          trackArtist: "01",
+          trackAlbum: "《凤舞课堂》",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/少儿基本功初级上3勾绷脚.mp3",
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
+          trackName: "少儿基本功初级上3勾绷脚",
+          trackArtist: "02",
+          trackAlbum: "《凤舞课堂》",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/少儿基本功初级上7腰.mp3",
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
+          trackName: "少儿基本功初级上7腰",
+          trackArtist: "03",
+          trackAlbum: "《凤舞课堂》",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/少儿基本功初级上8腰.mp3",
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
+          trackName: "少儿基本功初级上8腰",
+          trackArtist: "04",
+          trackAlbum: "《凤舞课堂》",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/少儿基本功训练初级下5颤肩胸腰.mp3",
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
+          trackName: "少儿基本功训练初级下5颤肩胸腰",
+          trackArtist: "05",
+          trackAlbum: "《凤舞课堂》",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/少儿基本功训练初级下3勾绷脚.mp3",
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
+          trackName: "少儿基本功训练初级下3勾绷脚",
+          trackArtist: "06",
+          trackAlbum: "《凤舞课堂》",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/少儿基本功初级下12后踢腿.mp3",
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
+          trackName: "少儿基本功初级下12后踢腿",
+          trackArtist: "07",
+          trackAlbum: "《凤舞课堂》",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/少儿基本功初级下7胯旁腿.mp3",
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
+          trackName: "少儿基本功初级下7胯旁腿",
+          trackArtist: "08",
+          trackAlbum: "《凤舞课堂》",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/少儿基本功初级下4踮脚.mp3",
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
+          trackName: "少儿基本功初级下4踮脚",
+          trackArtist: "09",
+          trackAlbum: "《凤舞课堂》",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/少儿基本功初级下1站姿.mp3",
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
+          trackName: "少儿基本功初级下1站姿",
+          trackArtist: "10",
+          trackAlbum: "《凤舞课堂》",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/少儿基本功初级上12跪立半腰.mp3",
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
+          trackName: "少儿基本功初级上12跪立半腰",
+          trackArtist: "11",
+          trackAlbum: "《凤舞课堂》",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/少儿基本功初级上5压胯.mp3",
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
+          trackName: "少儿基本功初级上5压胯",
+          trackArtist: "12",
+          trackAlbum: "《凤舞课堂》",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/少儿基本功初上9压后腿.mp3",
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
+          trackName: "少儿基本功初上9压后腿",
+          trackArtist: "13",
+          trackAlbum: "《凤舞课堂》",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/少儿基本功初级下10前旁大踢腿.mp3",
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
+          trackName: "少儿基本功初级下10前旁大踢腿",
+          trackArtist: "14",
+          trackAlbum: "《凤舞课堂》",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/少儿基本功初级素质臀肌俯卧后抬腿.mp3",
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
+          trackName: "少儿基本功初级素质臀肌俯卧后抬腿",
+          trackArtist: "15",
+          trackAlbum: "《凤舞课堂》",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/少儿基本功初级素质腹肌仰卧双前抬腿.mp3",
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
+          trackName: "少儿基本功初级素质腹肌仰卧双前抬腿",
+          trackArtist: "16",
+          trackAlbum: "《凤舞课堂》",
+        },
+        {
+          file: "https://chengyue.oss-cn-beijing.aliyuncs.com/sound/少儿基本功初级上11压旁腿.mp3",
+          thumb: "//www.xwboke.cn/api/api.php" + "?" + Math.floor(Math.random() * 100),
+          trackName: "少儿基本功初级上11压旁腿",
+          trackArtist: "17",
+          trackAlbum: "《凤舞课堂》",
+        }
+      ],
+      autoPlay: false
+    }
+    $(".jAudio--player").jAudio(t);
+    window.onload=function () {
+        document.addEventListener('touchstart',function (event) {
+          if(event.touches.length>1){
+            event.preventDefault();
+          }
+        })
+        var lastTouchEnd=0;
+        document.addEventListener('touchend',function (event) {
+          var now=(new Date()).getTime();
+          if(now-lastTouchEnd<=300){
+            event.preventDefault();
+          }
+          lastTouchEnd=now;
+        },false)
+      }
+  </script>
+  <!-- thumb: "//source.unsplash.com/200x200/?dance"+"?"+Math.floor(Math.random()*100), -->
+
+</body>
+
+</html>
